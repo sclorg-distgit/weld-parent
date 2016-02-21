@@ -4,7 +4,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          17
-Release:          9.11%{?dist}
+Release:          9.12%{?dist}
 Summary:          Parent POM for Weld
 License:          ASL 2.0
 URL:              http://seamframework.org/Weld
@@ -19,19 +19,19 @@ BuildArch:        noarch
 
 BuildRequires:    %{?scl_prefix_java_common}javapackages-tools
 BuildRequires:    %{?scl_prefix_java_common}maven-local
-BuildRequires:    maven30-maven-shared
-BuildRequires:    maven30-maven-enforcer-plugin
-BuildRequires:    maven30-maven-plugin-build-helper
-BuildRequires:    maven30-maven-install-plugin
+BuildRequires:    %{?scl_prefix}maven-shared
+BuildRequires:    %{?scl_prefix}maven-enforcer-plugin
+BuildRequires:    %{?scl_prefix}maven-plugin-build-helper
+BuildRequires:    %{?scl_prefix}maven-install-plugin
 
-Requires:         maven30-maven
+Requires:         %{?scl_prefix}maven
 
 %description
 Parent POM for Weld
 
 %prep
 %setup -c -T
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 cp %{SOURCE0} pom.xml
 cp %{SOURCE1} LICENSE
@@ -40,13 +40,13 @@ cp %{SOURCE1} LICENSE
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 mvn-rpmbuild install
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 install -d -m 755 $RPM_BUILD_ROOT%{_mavenpomdir}
 
@@ -61,6 +61,9 @@ install -pm 644 pom.xml $RPM_BUILD_ROOT%{_mavenpomdir}/JPP-%{pkg_name}.pom
 %doc LICENSE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 17-9.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 17-9.11
 - maven33 rebuild
 
