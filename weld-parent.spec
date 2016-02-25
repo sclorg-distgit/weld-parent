@@ -4,7 +4,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          17
-Release:          9.12%{?dist}
+Release:          9.13%{?dist}
 Summary:          Parent POM for Weld
 License:          ASL 2.0
 URL:              http://seamframework.org/Weld
@@ -18,7 +18,7 @@ Patch0:           weld-parent-%{version}-pom.patch
 BuildArch:        noarch
 
 BuildRequires:    %{?scl_prefix_java_common}javapackages-tools
-BuildRequires:    %{?scl_prefix_java_common}maven-local
+BuildRequires:    %{?scl_prefix}maven-local
 BuildRequires:    %{?scl_prefix}maven-shared
 BuildRequires:    %{?scl_prefix}maven-enforcer-plugin
 BuildRequires:    %{?scl_prefix}maven-plugin-build-helper
@@ -61,6 +61,9 @@ install -pm 644 pom.xml $RPM_BUILD_ROOT%{_mavenpomdir}/JPP-%{pkg_name}.pom
 %doc LICENSE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 17-9.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 17-9.12
 - maven33 rebuild #2
 
