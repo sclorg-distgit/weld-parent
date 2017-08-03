@@ -3,7 +3,7 @@
 
 Name:             %{?scl_prefix}weld-parent
 Version:          34
-Release:          3.1%{?dist}
+Release:          3.2%{?dist}
 Summary:          Parent POM for Weld
 License:          ASL 2.0
 URL:              http://weld.cdi-spec.org
@@ -36,6 +36,9 @@ Parent POM for Weld
 %files -f .mfiles
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 34-3.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 34-3.1
 - Automated package import and SCL-ization
 
